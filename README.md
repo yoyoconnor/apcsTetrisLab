@@ -14,7 +14,7 @@ There are seven pieces in standard Tetris.
 
 ![image alt text](image_0.png)
 
-Each standard piece is composed of four blocks. The two "L" and "dog" pieces are mirror images of each other, but we'll just think of them as similar but distinct pieces. A chemist might say that they where "isomers" or more accurately "enantiomers".
+Each standard piece is composed of four blocks. The two "L" and "dog" pieces are mirror images of each other, but we'll just think of them as similar but distinct pieces. A chemist might say that they are "isomers" or more accurately "enantiomers".
 
 A piece can be rotated 90 ̊ counterclockwise to yield another piece. Enough rotations get you back to the original piece – for example rotating a dog twice brings you back to the original state. Essentially, each tetris piece belongs to a family of between one and four distinct rotations. The square has one, the dogs have two, and the L's have four. For example, here are the four rotations (going counter-clockwise) of the left hand L:
 
@@ -92,13 +92,13 @@ After completing the Piece constructor, you should be able to see that it's work
 # * * *
 
 
-# *TODO (pair programming):* Piece's pieceRow method
+# *TODO (pair programming):* Piece's toString and pieceRow method
 
-Next, implement the pieceRow and toString methods. Tips for implementing the transformations are denoted by "TODO" comments.
+Next, implement the toString and pieceRow methods. Tips for implementing the transformations are denoted by "TODO" comments.
 
 # *MILESTONE 2:* JPieceTest with Rotations
 
-You should be able to load and compute all the piece rotations and see that it's working correctly through JPieceTest. Do not continue until the window when you run the main method of JPieceTest looks exactly like the below one. In addition, the attributes of each piece will be printed to the terminal. Inspect these when debugging your code. Ask for help as needed.
+You should be able to load and compute all the piece rotations and see that it's working correctly through JPieceTest. Do not continue until the window when you run the main method of JPieceTest looks exactly like the below screenshot. In addition, the attributes of each piece will be printed to the terminal. Inspect these when debugging your code. Ask for help as needed.
 
 ![image alt text](image_6.png)
 
@@ -118,7 +118,7 @@ In the object-oriented system that makes up a tetris game, the Board class does 
 
 * Provides support for the common operations that a client "player" module needs to build a GUI version of the game: add pieces to the board, let pieces gradually fall downward, detect various conditions about the board.
 
-* Performs all of the above quickly. Our board implementation will be structured to do common operations quickly. Speed will turn out to be important.
+* Performs all of the above quickly. Our board implementation is structured to do common operations quickly. Speed will turn out to be important.
 
 # Board Abstraction
 
@@ -170,9 +170,9 @@ You can copy ideas from JTetris source to build your JBrainTetris. Several insta
 
 * Override the createControlPanel() method.
 
-    * Invoke the superclass's implementation first and then add additional components to the container that is returned.
+    * Invoke the superclass's implementation first and then add additional components to the container that is returned. Note that the createControlPanel method returns a reference to the panel. You can use this to add additional components to the panel.
 
-    * Invoke the BrainFactory class's createBrains method. Use the returned list to create a JComboBox. You will need to create and add an object that implements the ActionListener interface to the JComboBox. The listener will need to update the reference stored in the brain instance variable to the selected value in the JComboBox. Add the JComboBox to the container. [This tutorial](https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html#uneditable) may be helpful.
+    * Invoke the BrainFactory class's createBrains method. Use the returned list to create a JComboBox. You will need to create and add an object that implements the ActionListener interface to the JComboBox. There are a few ways to do this, but it is recommended to define an inner class that implements the ActionListener interface like we did earlier in the unit. The listener will need to update the reference stored in the brain instance variable to the selected value in the JComboBox. Add the JComboBox to the container. [This tutorial](https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html#uneditable) may be helpful.
 
     * Create a JButton labeled "Enable Brain". You will need to create and add an object that implements the ActionListener interface to the JButton. The listener will need to update an instance variable to reflect if the brain is enabled or not. It will also need to update the label of the button. Add the JButton to the container.
 
@@ -220,7 +220,7 @@ Run the main method of the provided TetrisViewer class. Verify that the followin
 
 Use test mode (use the arg "test" when invoking the main method of JTetrisViewer) to force JTetris to use the fixed sequence of 100 pieces. Test mode with the unchanged SimpleBrain and with the pieces array built in the standard order should lead to exactly the following board after the 100 pieces have been played…![image alt text](image_8.png)
 
-This is an extremely rigorous test of the Board. Although there were only 100 different boards with a piece landed on screen, the brain explored thousands of boards that were never on screen. If the stress test is not coming out right, you should ook at the JPieceTest output to verify that the pieces are correct in every detail.
+This is an extremely rigorous test of the Board. Although there were only 100 different boards with a piece landed on screen, the brain explored thousands of boards that were never on screen. If the stress test is not coming out right, you should look at the JPieceTest output to verify that the pieces are correct in every detail.
 
 # * * *
 
@@ -280,5 +280,3 @@ Show me what you did!
 
 * Submit a link to your GitHub repository with this assignment.
 
-
-https://docs.google.com/document/d/1aP522dA1PyvgHs21AMOt7NL3zHahZJf8zTk7kPxGgPg/edit#heading=h.dp6yvn3xbr02
