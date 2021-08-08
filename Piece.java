@@ -16,9 +16,8 @@ import java.util.StringTokenizer;
 public final class Piece {
     /*
      * Implementation hints:
-     *  -The starter code does out a few simple things for you
-     *      -Store the body as a Point[] array
-     *  -The attributes of the Point class are x and y
+     *  -The starter code does a few simple things for you
+     *  -The attributes of the Point class are x and y and are public
      *  -Do not assume there are 4 points in the body -- use array.length
      *          to keep the code general
      */
@@ -43,7 +42,35 @@ public final class Piece {
      */
     private Piece(Point[] points)
     {
-        // TODO: implement constructor
+        // initialize next to null; it will be initialized in the pieceRow method
+        this.next = null;
+        
+        // TODO: copy the points array and copy the Point elements in the array
+        //  Note: this.body = points copies the reference to the array referenced by points;
+        //      it does not create a new array of references to Point objects
+        //  Note: this.body[i] = points[i] copies a reference to a Point object;
+        //      it does not create a new Point object with the same x and y attributes
+        //      as the element in the points array
+        
+        
+        // TODO: initialize the width instance variable with the width of the piece
+        
+        // TODO: initialize the height instance variable with the height of the piece
+        
+        // TODO: initialize the skirt instance variable
+        //  Note: carefully read and description of the skirt in the lab document;
+        //      this is the most challenging algorithm in this constructor
+        
+        // skirt psuedocode
+        // create a new skirt array with the appropriate number of elements
+        // initialize each element in the skirt to a "large" value (e.g., height)
+        // for each point in the body:
+            // get the x value
+            // get the y value
+            // check if the y value is less than the value in the skirt 
+            //      at the index equal to the x value
+            // if so, update the value in the skirt
+
     }   
 
     /**
@@ -252,7 +279,7 @@ public final class Piece {
      */
     private static Point[] parsePoints(String string)
     {
-        ArrayList<Point> points = new ArrayList();
+        ArrayList<Point> points = new ArrayList<>();
         StringTokenizer tok = new StringTokenizer(string);
         try
         {
