@@ -85,7 +85,8 @@ class JPieceTest extends JComponent
 
             // draw a description of the piece along the bottom
             g2.setColor(Color.RED);
-            String desc = "w:" + piece.getWidth() + " h:" + piece.getHeight();
+            String desc = "w:" + piece.getWidth() + " h:" + piece.getHeight() +
+                " sw:" + piece.getSkirt().length;
             g2.drawString(desc, (float)(r.getX() + 1),
                     (float)(r.getY() + (4 * pixelSize) - 2));
 
