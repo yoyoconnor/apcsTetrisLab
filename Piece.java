@@ -48,8 +48,8 @@ public final class Piece {
         // TODO: copy the points array and copy the Point elements in the array
         //  Note: this.body = points copies the reference to the array referenced by points;
         //      it does not create a new array of references to Point objects
-        //  Note: this.body[i] = points[i] copies a reference to a Point object;
-        //      it does not create a new Point object with the same x and y attributes
+        //  Note: this.body[i] = points[i] (or Arrays.copyOf) copies a reference to a Point
+        //      object; it does not create a new Point object with the same x and y attributes
         //      as the element in the points array
         
         
