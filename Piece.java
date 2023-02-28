@@ -45,12 +45,33 @@ public final class Piece {
         // initialize next to null; it will be initialized in the pieceRow method
         this.next = null;
         
+        this.body=new Point[points.length];
+        for(int i=0; i<body.length; i++){
+            this.body[i]=new Point((int)points[i].getX(),(int)points[i].getY());
+        }
         // TODO: copy the points array and copy the Point elements in the array
         //  Note: this.body = points copies the reference to the array referenced by points;
         //      it does not create a new array of references to Point objects
         //  Note: this.body[i] = points[i] (or Arrays.copyOf) copies a reference to a Point
         //      object; it does not create a new Point object with the same x and y attributes
         //      as the element in the points array
+        
+        int minx=0;
+        int maxx=0;
+        int miny=0;
+        int maxy=0;
+        for(Point point:body){
+            minx=Math.min(minx,point.x);
+            maxx=Math.max(maxx,point.x+1);
+            miny=Math.min(miny,point.y);
+            maxy=Math.max(maxy,point.y+1);
+        }
+        width=maxx-minx;
+        height=maxy-miny;
+        skirt=new int[width];
+        for(Point point:body){
+            skirt[point.x]=Math.min(skirt[point.x],point.y);
+        }
         
         
         // TODO: initialize the width instance variable with the width of the piece
