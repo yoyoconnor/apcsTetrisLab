@@ -69,8 +69,12 @@ public final class Piece {
         width=maxx-minx;
         height=maxy-miny;
         skirt=new int[width];
+        for(int i=0; i<skirt.length;i++){
+            skirt[i]=Integer.MAX_VALUE;
+        }
         for(Point point:body){
-            skirt[point.x]=Math.min(skirt[point.x],point.y);
+            //skirt[point.x]=Math.min(skirt[point.x],point.y);
+            if(skirt[point.x]>point.y){skirt[point.x]=point.y;}
         }
         
         
@@ -207,7 +211,7 @@ public final class Piece {
         String str = "";
         
         // TODO: build a string that contains all of the attributes of this Piece
-        
+        str+= "Body: "+Arrays.toString(body)+ "Skirt"+ Arrays.toString(skirt)+width+height;
         return str;
     }
     
@@ -265,8 +269,25 @@ public final class Piece {
                 rotatedPoints[i] = new Point(piece.getBody()[i]);
             }
 
-            // TODO: step 1: reflect across the line y = x
-            
+            int top=0;
+            int bottom=0;
+            Point leftmost=null;
+            for(Point point:rotatedPoints){
+                //step 1
+                int temp=point.x;
+                point.x=point.y;
+                point.y=temp;
+                //step2
+                point.x=0-point.x-1;
+                if((leftmost==null)||(point.x<leftmost.x)){
+                    leftmost=point;
+                }
+            }
+            while(leftmost.x!=0){
+                for(Point point:rotatedPoints){
+                    point.x++;
+                }
+            }
             // TODO: step 2: reflect across y axis
             
             // TODO: step 3: translate right
