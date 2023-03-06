@@ -3,7 +3,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-
+/*
+ * public static final int ROTATE = 0;
+    public static final int LEFT = 1;
+    public static final int RIGHT = 2;
+    public static final int DROP = 3;
+    public static final int DOWN = 4;
+ */
 /**
  * Write a description of class JBrainTetris here.
  *
@@ -29,17 +35,20 @@ public class JBrainTetris extends JTetris
         Container panel =super.createControlPanel();
         
         panel.add(brainEnabler);
-        
+        panel.add(brainList);
         return panel;
     }
     
     @Override
     public Piece pickNextPiece()
     {
-        int pieceNum = (int)(this.pieces.length * this.random.nextDouble());
-        return this.pieces[pieceNum];
+        return currbrain.bestMove(board,super.pickNextPiece(),HEIGHT+TOP_SPACE).getPiece();
+
     }
-    
+    @Override 
+    public void tick(int VERB){
+        
+    }
     
     
     private class brainTypeListener implements ActionListener
